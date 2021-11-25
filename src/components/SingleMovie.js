@@ -4,18 +4,25 @@ import StarIcon from "@mui/icons-material/Star";
 import Genre from "./Genre";
 import { Link } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useGlobalContext } from "../context";
 
-function SingleMovie({ id, url, poster, title, rating }) {
+function SingleMovie({ id, poster_path, title, vote_average }) {
+  const { backdrop_base, poster_base } = useGlobalContext();
+
   return (
     <article className="single-movie">
-      <img src={poster} alt="movie-poster" className="single-movie-poster" />
+      <img
+        src={`${poster_base}${poster_path}`}
+        alt="movie-poster"
+        className="single-movie-poster"
+      />
       <div className="single-movie-content">
-        <Genre>Fantasy</Genre>
+        {/* <Genre>Fantasy</Genre> */}
         <h2 className="poster-title">{title}</h2>
         <div className="rating">
           <Rating
             name="simple-controlled"
-            value={rating}
+            value={vote_average}
             readOnly={true}
             size="small"
             precision={0.5}

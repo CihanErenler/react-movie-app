@@ -4,11 +4,9 @@ import ImageNav from "./ImageNav";
 import { useGlobalContext } from "../context";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
 import ArrowBackIosTwoToneIcon from "@mui/icons-material/ArrowBackIosTwoTone";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-function FeaturedMovies() {
+function FeaturedMovies({ movies }) {
   const [current, setCurrent] = useState(1);
-  const { loading, medias } = useGlobalContext();
 
   const checkIndex = (index) => {
     if (index < 1) return 5;
@@ -18,30 +16,21 @@ function FeaturedMovies() {
 
   return (
     <section className="featured-movies-container">
-      {loading ? (
-        <div className="featured-movies">
-          <SkeletonTheme baseColor="#111111" highlightColor="#222">
-            <p>
-              <Skeleton count={3} />
-            </p>
-          </SkeletonTheme>
-        </div>
-      ) : (
-        <div className="featured-movies">
-          {medias.movie.slice(0, 5).map((m, index) => {
-            return (
-              <FeacturedMovie
-                key={m.id}
-                {...m}
-                current={current}
-                next={setCurrent}
-                check={checkIndex}
-                index={index}
-              />
-            );
-          })}
-        </div>
-      )}
+      <div className="featured-movies">
+        {movies.map((m, index) => {
+          return (
+            <FeacturedMovie
+              key={m.id}
+              {...m}
+              current={current}
+              next={setCurrent}
+              check={checkIndex}
+              index={index}
+            />
+          );
+        })}
+      </div>
+
       <button className="featured-left d-flex align-center justify-s">
         <ArrowBackIosTwoToneIcon
           className="feature-navigation"
@@ -55,7 +44,7 @@ function FeaturedMovies() {
         />
       </button>
       <ImageNav
-        movies={medias.movie.slice(0, 5)}
+        movies={movies}
         current={current}
         next={setCurrent}
         check={checkIndex}

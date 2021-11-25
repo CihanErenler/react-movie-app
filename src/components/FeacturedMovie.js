@@ -2,10 +2,7 @@ import React, { useEffect } from "react";
 import Genre from "./Genre";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
-import calc from "../calc";
-
-const backdrop_base = "https://image.tmdb.org/t/p/w1280";
-const poster_base = "https://image.tmdb.org/t/p/w500";
+import { useGlobalContext } from "../context";
 
 function FeacturedMovie({
   id,
@@ -19,17 +16,17 @@ function FeacturedMovie({
   vote_average,
   poster_path,
 }) {
+  const { backdrop_base, poster_base } = useGlobalContext();
+
   useEffect(() => {
     const timeOut = setTimeout(() => {
       next(check(current + 1));
-    }, 4000);
+    }, 5000);
     return () => {
       clearTimeout(timeOut);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current]);
-
-  const rating = calc(parseInt(vote_average));
 
   return (
     <section
@@ -51,7 +48,7 @@ function FeacturedMovie({
           <div className="rating">
             <Rating
               name="simple-controlled"
-              value={rating}
+              value={vote_average}
               readOnly={true}
               precision={0.1}
               emptyIcon={
@@ -63,11 +60,7 @@ function FeacturedMovie({
             />
           </div>
           <h1 className="featured-title">{title}</h1>
-          <p className="featured-desc">
-            {overview.length > 300
-              ? `${overview.substring(0, 400)}...`
-              : overview}
-          </p>
+          <p className="featured-desc">{overview}</p>
           <button className="btn btn-primary">Learn more</button>
         </div>
       </div>

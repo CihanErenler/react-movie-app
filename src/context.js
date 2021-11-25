@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-// import { movies } from "./tempData";
 import { getTrends } from "./data";
+import calc from "./calc";
 
 const AppContext = React.createContext();
 
@@ -9,11 +9,16 @@ export const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [trendMovieOnly, setTrendMovieOnly] = useState(true);
 
+  const backdrop_base = "https://image.tmdb.org/t/p/w1280";
+  const poster_base = "https://image.tmdb.org/t/p/w500";
+
   const getTrendData = () => {
     getTrends()
       .then((res) => {
+        // Seperate movies and tv shows from mixed result
         const mediaList = res.results.reduce(
           (total, current) => {
+            current.vote_average = calc(parseInt(current.vote_average));
             if (current.media_type === "movie") {
               total["movie"].push(current);
             } else {
@@ -37,7 +42,9 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ medias, loading }}>
+    <AppContext.Provider
+      value={{ medias, loading, backdrop_base, poster_base }}
+    >
       {children}
     </AppContext.Provider>
   );
