@@ -12,3 +12,27 @@ export const getTrends = async () => {
     console.error(error);
   }
 };
+
+export const getMovie = async (id) => {
+  try {
+    const response = await fetch(
+      `${base_url}movie/${id}?api_key=${api_key}&append_to_response=credits,reviews,recommendations`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getShow = async (id) => {
+  try {
+    const response = await fetch(
+      `${base_url}tv/${id}?api_key=${api_key}&append_to_response=credits,reviews,similar`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};

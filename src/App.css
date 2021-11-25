@@ -139,8 +139,13 @@ img {
   left: 0;
   width: 100%;
   height: 70px;
-  background-image:linear-gradient( rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
+  transition: background-image 1s ease !important;
+
   z-index: 2;
+}
+
+.navbar.dark {
+  background-image:linear-gradient(rgba(18,18,18,1), rgba(18,18,18,.1)) ;
 }
 
 .navbar .container {
@@ -150,7 +155,7 @@ img {
 }
 
 .logo-svg {
-  width: 6rem;
+  width: 7rem;
   margin-right: 10px;
 }
 
@@ -232,7 +237,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to right, rgba(18, 18, 18, .9), rgba(0, 0, 0, .2))
+  background-image: linear-gradient(to right, rgba(18, 18, 18, .9), rgba(0, 0, 0, .5))
 }
 
 .featured-img-container img {
@@ -380,7 +385,7 @@ img {
   top: 0;
   right: 0;
   width: 100px;
-  height: 100%;
+  height: calc(100% - 20px);
   background-image: linear-gradient(to left, rgba(18, 18, 18, 1), rgba(0, 0, 0, 0));
   z-index: 2;
 }

@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import logo from "../assets/MBOX.svg";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 
 function Navbar() {
+  const navbar = useRef(null);
+  useEffect(() => {
+    function handleScroll() {
+      if (
+        document.documentElement.scrollTop > 30 ||
+        document.body.scrollTop > 30
+      ) {
+        navbar.current.classList.add("dark");
+      } else {
+        navbar.current.classList.remove("dark");
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="navbar ">
+    <div className="navbar" ref={navbar}>
       <div className="container align-center">
         <Link to="/" className="d-flex align-center">
           <img className="logo-svg" src={logo} alt="logo" />

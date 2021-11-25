@@ -5,8 +5,16 @@ import Genre from "./Genre";
 import { Link } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useGlobalContext } from "../context";
+import MoviePage from "../pages/MoviePage";
 
-function SingleMovie({ id, poster_path, title, vote_average, name }) {
+function SingleMovie({
+  id,
+  poster_path,
+  title,
+  vote_average,
+  name,
+  media_type,
+}) {
   const { backdrop_base, poster_base } = useGlobalContext();
 
   return (
@@ -36,7 +44,10 @@ function SingleMovie({ id, poster_path, title, vote_average, name }) {
         </div>
       </div>
       <div className="single-more">
-        <Link to="/single-movie" className="single-link d-flex align-center">
+        <Link
+          to={`/${media_type === "tv" ? "tv" : "movie"}/${id}`}
+          className="single-link d-flex align-center"
+        >
           Learn more
           <ArrowForwardIcon
             style={{ marginLeft: "0.313rem" }}

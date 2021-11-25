@@ -3,6 +3,7 @@ import Genre from "./Genre";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import { useGlobalContext } from "../context";
+import { Link } from "react-router-dom";
 
 function FeacturedMovie({
   id,
@@ -15,6 +16,7 @@ function FeacturedMovie({
   index,
   vote_average,
   poster_path,
+  media_type,
 }) {
   const { backdrop_base, poster_base } = useGlobalContext();
 
@@ -61,7 +63,12 @@ function FeacturedMovie({
           </div>
           <h1 className="featured-title">{title}</h1>
           <p className="featured-desc">{overview}</p>
-          <button className="btn btn-primary">Learn more</button>
+          <Link
+            className="btn btn-primary"
+            to={`/${media_type === "movie" ? "movie" : "tv"}/${id}`}
+          >
+            Learn more
+          </Link>
         </div>
       </div>
     </section>
