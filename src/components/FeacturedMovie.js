@@ -2,16 +2,22 @@ import React, { useEffect } from "react";
 import Genre from "./Genre";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
+import calc from "../calc";
+
+const backdrop_base = "https://image.tmdb.org/t/p/w1280";
+const poster_base = "https://image.tmdb.org/t/p/w500";
 
 function FeacturedMovie({
   id,
   title,
-  url,
-  desc,
+  backdrop_path,
+  overview,
   next,
   check,
   current,
-  rating,
+  index,
+  vote_average,
+  poster_path,
 }) {
   useEffect(() => {
     const timeOut = setTimeout(() => {
@@ -23,16 +29,23 @@ function FeacturedMovie({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current]);
 
+  const rating = calc(parseInt(vote_average));
+
   return (
     <section
       className={` ${
-        id === current ? "featured-movie active" : "featured-movie"
+        index + 1 === current ? "featured-movie active" : "featured-movie"
       } `}
     >
       <div className="featured-img-container">
-        <img src={url} alt="" />
+        <img src={`${backdrop_base}${backdrop_path}`} alt="backdrop" />
       </div>
       <div className="container p-relative d-flex align-center justify-s">
+        <img
+          className="featured-poster"
+          src={`${poster_base}${poster_path}`}
+          alt=""
+        />
         <div className="featured-content">
           <Genre>Fantasy</Genre>
           <div className="rating">
@@ -40,8 +53,7 @@ function FeacturedMovie({
               name="simple-controlled"
               value={rating}
               readOnly={true}
-              precision={0.5}
-              max={10}
+              precision={0.1}
               emptyIcon={
                 <StarIcon
                   style={{ opacity: 0.55, color: "white" }}
@@ -51,7 +63,11 @@ function FeacturedMovie({
             />
           </div>
           <h1 className="featured-title">{title}</h1>
-          <p className="featured-desc">{desc}</p>
+          <p className="featured-desc">
+            {overview.length > 300
+              ? `${overview.substring(0, 400)}...`
+              : overview}
+          </p>
           <button className="btn btn-primary">Learn more</button>
         </div>
       </div>

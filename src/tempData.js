@@ -6,7 +6,7 @@ export const movies = [
     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit commodi eveniet laborum ullam, excepturi pariatur quia adipisci. Harum eaque, tempora quo rem id ex, quidem repudiandae libero sint fuga mollitia?",
     poster:
       "https://www.themoviedb.org/t/p/original/8GFtkImmK0K1VaUChR0n9O61CFU.jpg",
-    rating: 3.5,
+    rating: 3.2,
   },
   {
     id: 2,
@@ -24,6 +24,6 @@ export const movies = [
     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit commodi eveniet laborum ullam, excepturi pariatur quia adipisci. Harum eaque, tempora quo rem id ex, quidem repudiandae libero sint fuga mollitia?",
     poster:
       "https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88207/90748/Justice-League-Advance-Style-Poster-buy-original-movie-posters-at-starstills__25567.1494447719.jpg?c=2",
-    rating: 4.5,
+    rating: 4.7,
   },
 ];

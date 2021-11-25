@@ -182,7 +182,7 @@ img {
 
 /* Featured movies */
 .featured-movies-container {
-  height: 33rem;
+  height: 36rem;
   width: 100%;
   position: relative;
 }
@@ -198,7 +198,7 @@ img {
 }
 
 .featured-movie {
-  height: 33rem;
+  height: 36rem;
   width: 100%;
   position: absolute;
   transition: var(--transition-2);
@@ -225,7 +225,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to right, rgba(29, 29, 29, .7), rgba(0, 0, 0, 0))
+  background-image: linear-gradient(to right, rgba(29, 29, 29, 1), rgba(0, 0, 0, .2))
 }
 
 .featured-img-container img {
@@ -233,6 +233,14 @@ img {
   height: 100%;
   object-fit: cover;
   object-position: top;
+}
+
+.featured-poster {
+  height: 26rem !important;
+  width: 20rem;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-right: 50px;
 }
 
 .featured-movie .featured-content {

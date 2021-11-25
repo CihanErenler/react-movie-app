@@ -4,32 +4,44 @@ import ImageNav from "./ImageNav";
 import { useGlobalContext } from "../context";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
 import ArrowBackIosTwoToneIcon from "@mui/icons-material/ArrowBackIosTwoTone";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function FeaturedMovies() {
   const [current, setCurrent] = useState(1);
-  const { movies } = useGlobalContext();
+  const { loading, medias } = useGlobalContext();
 
   const checkIndex = (index) => {
-    if (index < 1) return 3;
-    if (index > 3) return 1;
+    if (index < 1) return 5;
+    if (index > 5) return 1;
     return index;
   };
 
   return (
     <section className="featured-movies-container">
-      <div className="featured-movies">
-        {movies.map((movie) => {
-          return (
-            <FeacturedMovie
-              key={movie.id}
-              {...movie}
-              current={current}
-              next={setCurrent}
-              check={checkIndex}
-            />
-          );
-        })}
-      </div>
+      {loading ? (
+        <div className="featured-movies">
+          <SkeletonTheme baseColor="#111111" highlightColor="#222">
+            <p>
+              <Skeleton count={3} />
+            </p>
+          </SkeletonTheme>
+        </div>
+      ) : (
+        <div className="featured-movies">
+          {medias.movie.slice(0, 5).map((m, index) => {
+            return (
+              <FeacturedMovie
+                key={m.id}
+                {...m}
+                current={current}
+                next={setCurrent}
+                check={checkIndex}
+                index={index}
+              />
+            );
+          })}
+        </div>
+      )}
       <button className="featured-left d-flex align-center justify-s">
         <ArrowBackIosTwoToneIcon
           className="feature-navigation"
@@ -43,7 +55,7 @@ function FeaturedMovies() {
         />
       </button>
       <ImageNav
-        movies={movies}
+        movies={medias.movie.slice(0, 5)}
         current={current}
         next={setCurrent}
         check={checkIndex}
