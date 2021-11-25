@@ -4,14 +4,16 @@ import MovieRow from "../components/MovieRow";
 import { useGlobalContext } from "../context";
 
 function HomePage() {
-  const { medias, loading } = useGlobalContext();
+  const { medias, loading, trendMovieOnly, allMedias } = useGlobalContext();
+
+  const itemToSend = trendMovieOnly ? medias.movie : medias.tv;
 
   return (
     <div>
       {!loading && (
         <React.Fragment>
-          <FeaturedMovies movies={medias.movie.slice(0, 5)} />
-          <MovieRow movies={medias.movie} />
+          <FeaturedMovies movies={allMedias.slice(0, 5)} />
+          <MovieRow movies={itemToSend} />
         </React.Fragment>
       )}
     </div>

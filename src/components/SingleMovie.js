@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useGlobalContext } from "../context";
 
-function SingleMovie({ id, poster_path, title, vote_average }) {
+function SingleMovie({ id, poster_path, title, vote_average, name }) {
   const { backdrop_base, poster_base } = useGlobalContext();
 
   return (
@@ -18,7 +18,7 @@ function SingleMovie({ id, poster_path, title, vote_average }) {
       />
       <div className="single-movie-content">
         {/* <Genre>Fantasy</Genre> */}
-        <h2 className="poster-title">{title}</h2>
+        <h2 className="poster-title">{title ? title : name}</h2>
         <div className="rating">
           <Rating
             name="simple-controlled"

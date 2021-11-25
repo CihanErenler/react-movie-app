@@ -6,6 +6,7 @@ const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   const [medias, setMedias] = useState({ movie: [], tv: [] });
+  const [allMedias, setAllMedas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [trendMovieOnly, setTrendMovieOnly] = useState(true);
 
@@ -29,6 +30,7 @@ export const AppProvider = ({ children }) => {
           { movie: [], tv: [] }
         );
         console.log(mediaList);
+        setAllMedas(res.results);
         setMedias(mediaList);
         setLoading(false);
       })
@@ -43,7 +45,15 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ medias, loading, backdrop_base, poster_base }}
+      value={{
+        medias,
+        loading,
+        backdrop_base,
+        poster_base,
+        trendMovieOnly,
+        setTrendMovieOnly,
+        allMedias,
+      }}
     >
       {children}
     </AppContext.Provider>

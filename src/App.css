@@ -119,7 +119,6 @@ img {
   position: absolute;
 }
 
-
 /* Genre */
 .genre {
   display: inline-grid;
@@ -348,7 +347,11 @@ img {
   width: 100px;
   border-radius: 5rem;
   background-color: var(--color-primary);
+  transition: all .3s cubic-bezier(.17, .67, .66, 1.18);
+}
 
+.row-switcher.active::before {
+  left: 100px;
 }
 
 .row-title {
