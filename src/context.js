@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { getTrends } from "./data";
+import { getTrends, getNowPlaying } from "./data";
 import calc from "./calc";
 
 const AppContext = React.createContext();
@@ -7,6 +7,7 @@ const AppContext = React.createContext();
 export const AppProvider = ({ children }) => {
   const [medias, setMedias] = useState({ movie: [], tv: [] });
   const [allMedias, setAllMedas] = useState([]);
+  const [nowPlaying, setNowPlaying] = useState(null);
   const [loading, setLoading] = useState(true);
   const [trendMovieOnly, setTrendMovieOnly] = useState(true);
 
@@ -38,9 +39,18 @@ export const AppProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const getPlayingData = () => {
+    getNowPlaying()
+      .then((res) => {
+        setNowPlaying(res.results);
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     setLoading(true);
     getTrendData();
+    getPlayingData();
   }, []);
 
   return (
@@ -53,6 +63,7 @@ export const AppProvider = ({ children }) => {
         trendMovieOnly,
         setTrendMovieOnly,
         allMedias,
+        nowPlaying,
       }}
     >
       {children}

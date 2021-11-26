@@ -14,11 +14,12 @@ function SingleMovie({
   vote_average,
   name,
   media_type,
+  large,
 }) {
   const { backdrop_base, poster_base } = useGlobalContext();
 
   return (
-    <article className="single-movie">
+    <article className={large ? "single-movie large" : "single-movie"}>
       <img
         src={`${poster_base}${poster_path}`}
         alt="movie-poster"

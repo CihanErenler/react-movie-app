@@ -36,3 +36,15 @@ export const getShow = async (id) => {
     console.error(error);
   }
 };
+
+export const getNowPlaying = async () => {
+  try {
+    const response = await fetch(
+      `${base_url}movie/now_playing?api_key=${api_key}&language=en-US&page=1`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};

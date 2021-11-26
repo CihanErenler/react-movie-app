@@ -42,12 +42,12 @@ function MoviePage() {
     <React.Fragment>
       {movie && (
         <section className="cover p_relative">
-          <div className="cover-image-container p_relative">
+          <div className="cover-image-container">
             <img src={`${backdrop_base}${movie.backdrop_path}`} alt="cover" />
             <div className="featured-bottom"></div>
           </div>
-          <div className="container">
-            <div className="single-movie-content d-flex">
+          <div className="single-content-container">
+            <div className="single-movie-content">
               <div className="single-movie-poster">
                 <img src={`${poster_base}${movie.poster_path}`} alt="poster" />
               </div>
