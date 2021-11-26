@@ -4,8 +4,16 @@ import MovieRow from "../components/MovieRow";
 import { useGlobalContext } from "../context";
 
 function HomePage() {
-  const { medias, loading, trendMovieOnly, allMedias, nowPlaying } =
-    useGlobalContext();
+  const {
+    setTrendMovieOnly,
+    medias,
+    loading,
+    trendMovieOnly,
+    allMedias,
+    nowPlaying,
+  } = useGlobalContext();
+
+  console.log(trendMovieOnly);
 
   const itemToSend = trendMovieOnly ? medias.movie : medias.tv;
 
@@ -13,10 +21,19 @@ function HomePage() {
     <div>
       <React.Fragment>
         {!loading && <FeaturedMovies movies={allMedias.slice(0, 5)} />}
-        {!loading && <MovieRow title="Trending" movies={itemToSend} />}
-        {nowPlaying && (
-          <MovieRow title="In theater" movies={nowPlaying} large={true} />
-        )}
+        <MovieRow
+          title="Trending"
+          movies={itemToSend}
+          isSwitchOn={true}
+          setTrendMovieOnly={setTrendMovieOnly}
+          trendMovieOnly={trendMovieOnly}
+        />
+        <MovieRow
+          title="In theater"
+          movies={nowPlaying}
+          large={true}
+          isSwitchOn={false}
+        />
       </React.Fragment>
     </div>
   );

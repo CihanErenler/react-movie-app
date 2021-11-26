@@ -1,11 +1,9 @@
 import React from "react";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
-import Genre from "./Genre";
 import { Link } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useGlobalContext } from "../context";
-import MoviePage from "../pages/MoviePage";
 
 function SingleMovie({
   id,
@@ -16,7 +14,7 @@ function SingleMovie({
   media_type,
   large,
 }) {
-  const { backdrop_base, poster_base } = useGlobalContext();
+  const { poster_base } = useGlobalContext();
 
   return (
     <article className={large ? "single-movie large" : "single-movie"}>

@@ -1,30 +1,29 @@
 import React from "react";
-import { useGlobalContext } from "../context";
 
-function RowSwitch() {
-  const { trendMovieOnly, setTrendMovieOnly } = useGlobalContext();
-
+function RowSwitch({ setTrendMovieOnly, trendMovieOnly }) {
   return (
-    <div
-      className={`${
-        trendMovieOnly
-          ? "row-switcher d-flex p-relative"
-          : "row-switcher d-flex p-relative active"
-      }`}
-    >
-      <button
-        className="btn switch-btn"
-        onClick={() => setTrendMovieOnly(true)}
+    <React.Fragment>
+      <div
+        className={`${
+          trendMovieOnly
+            ? "row-switcher d-flex p-relative"
+            : "row-switcher d-flex p-relative active"
+        }`}
       >
-        Movies
-      </button>
-      <button
-        className="btn switch-btn"
-        onClick={() => setTrendMovieOnly(false)}
-      >
-        Tv-shows
-      </button>
-    </div>
+        <button
+          className="btn small-btn"
+          onClick={() => setTrendMovieOnly(true)}
+        >
+          Movies
+        </button>
+        <button
+          className="btn small-btn"
+          onClick={() => setTrendMovieOnly(false)}
+        >
+          Tv-shows
+        </button>
+      </div>
+    </React.Fragment>
   );
 }
 

@@ -13,6 +13,7 @@ export const AppProvider = ({ children }) => {
 
   const backdrop_base = "https://image.tmdb.org/t/p/w1280";
   const poster_base = "https://image.tmdb.org/t/p/w500";
+  const actor_base = "https://www.themoviedb.org/t/p/w276_and_h350_face/";
 
   const getTrendData = () => {
     getTrends()
@@ -30,7 +31,6 @@ export const AppProvider = ({ children }) => {
           },
           { movie: [], tv: [] }
         );
-        console.log(mediaList);
         setAllMedas(res.results);
         setMedias(mediaList);
         setLoading(false);
@@ -60,10 +60,11 @@ export const AppProvider = ({ children }) => {
         loading,
         backdrop_base,
         poster_base,
-        trendMovieOnly,
-        setTrendMovieOnly,
         allMedias,
         nowPlaying,
+        trendMovieOnly,
+        setTrendMovieOnly,
+        actor_base,
       }}
     >
       {children}

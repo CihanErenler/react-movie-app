@@ -4,7 +4,14 @@ import { Link } from "react-router-dom";
 import ArrowForwardIosTwoToneIcon from "@mui/icons-material/ArrowForwardIosTwoTone";
 import RowSwitch from "./RowSwitch";
 
-function MovieRow({ movies, title, large }) {
+function MovieRow({
+  movies,
+  title,
+  large,
+  isSwitchOn,
+  setTrendMovieOnly,
+  trendMovieOnly,
+}) {
   return (
     <section className="movie-row">
       <div className="container p-relative">
@@ -14,14 +21,21 @@ function MovieRow({ movies, title, large }) {
             <span className="row-title-link">Display all</span>
             <ArrowForwardIosTwoToneIcon className="row-title-link-icon" />
           </Link>
-          {!large && <RowSwitch />}
+          {isSwitchOn && (
+            <RowSwitch
+              setTrendMovieOnly={setTrendMovieOnly}
+              trendMovieOnly={trendMovieOnly}
+            />
+          )}
         </div>
         <div className="row-content ">
-          <div className="movies-container d-flex">
-            {movies.map((movie) => {
-              return <SingleMovie key={movie.id} {...movie} large={large} />;
-            })}
-          </div>
+          {movies && (
+            <div className="movies-container d-flex">
+              {movies.map((movie) => {
+                return <SingleMovie key={movie.id} {...movie} large={large} />;
+              })}
+            </div>
+          )}
         </div>
       </div>
     </section>
