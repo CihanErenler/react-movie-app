@@ -37,7 +37,11 @@ function FeacturedMovie({
       } `}
     >
       <div className="featured-img-container">
-        <img src={`${backdrop_base}${backdrop_path}`} alt="backdrop" />
+        <img
+          className="featured-backdrop"
+          src={`${backdrop_base}${backdrop_path}`}
+          alt="backdrop"
+        />
       </div>
       <div className="container p-relative d-flex align-center justify-s">
         <img

@@ -13,8 +13,6 @@ function HomePage() {
     nowPlaying,
   } = useGlobalContext();
 
-  console.log(trendMovieOnly);
-
   const itemToSend = trendMovieOnly ? medias.movie : medias.tv;
 
   return (
