@@ -25,9 +25,9 @@ function SingleMovie({
       />
       <div className="single-movie-content">
         {/* <Genre>Fantasy</Genre> */}
-        <h2 className="poster-title">{title ? title : name}</h2>
+        {/* <h2 className="poster-title">{title ? title : name}</h2> */}
         <div className="rating">
-          <Rating
+          {/* <Rating
             name="simple-controlled"
             value={vote_average}
             readOnly={true}
@@ -39,7 +39,7 @@ function SingleMovie({
                 fontSize="inherit"
               />
             }
-          />
+          /> */}
         </div>
       </div>
       <div className="single-more">

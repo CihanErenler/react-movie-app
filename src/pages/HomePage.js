@@ -25,12 +25,14 @@ function HomePage() {
           isSwitchOn={true}
           setTrendMovieOnly={setTrendMovieOnly}
           trendMovieOnly={trendMovieOnly}
+          displayAll={true}
         />
         <MovieRow
           title="In theater"
           movies={nowPlaying}
           large={true}
           isSwitchOn={false}
+          displayAll={true}
         />
       </React.Fragment>
     </div>

@@ -7,12 +7,16 @@ import Genre from "../components/Genre";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import Person from "../components/Person";
+import MovieRow from "../components/MovieRow";
 import { Link } from "react-router-dom";
 
 function MoviePage() {
   const [media, setMedia] = useState(null);
   const [cast, setCast] = useState([]);
+  const [recs, setRecs] = useState([]);
   const { id, type } = useParams();
+
+  console.log(id);
 
   const { backdrop_base, poster_base } = useGlobalContext();
 
@@ -68,6 +72,7 @@ function MoviePage() {
       const mediaObj = createObj(res);
       console.log(res);
       setMedia(mediaObj);
+      setRecs(res.recommendations.results);
       setCast(res.credits.cast);
     });
   };
@@ -77,6 +82,7 @@ function MoviePage() {
       const mediaObj = createObj(res);
       console.log(mediaObj);
       setMedia(mediaObj);
+      setRecs(res.recommendations.results);
       setCast(res.credits.cast);
     });
   };
@@ -87,7 +93,13 @@ function MoviePage() {
     } else {
       fetchTv(id);
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, [id]);
 
   return (
     <React.Fragment>
@@ -210,6 +222,19 @@ function MoviePage() {
               </div>
             </div>
           </div>
+          {recs ? (
+            <div className="container" style={{ padding: "0 50px" }}>
+              <MovieRow
+                title="Recommendations"
+                movies={recs}
+                large={false}
+                isSwitchOn={false}
+                displayAll={false}
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </section>
       )}
     </React.Fragment>

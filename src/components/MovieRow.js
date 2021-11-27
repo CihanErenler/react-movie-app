@@ -11,16 +11,21 @@ function MovieRow({
   isSwitchOn,
   setTrendMovieOnly,
   trendMovieOnly,
+  displayAll,
 }) {
   return (
     <section className="movie-row">
       <div className="container p-relative">
         <div className="movie-row-title d-flex align-center">
-          <Link className="row-title align-center" to="/display-all">
-            {title}
-            <span className="row-title-link">Display all</span>
-            <ArrowForwardIosTwoToneIcon className="row-title-link-icon" />
-          </Link>
+          {displayAll ? (
+            <Link className="row-title align-center" to="/display-all">
+              {title}
+              <span className="row-title-link">Display all</span>
+              <ArrowForwardIosTwoToneIcon className="row-title-link-icon" />
+            </Link>
+          ) : (
+            <span className="row-title">{title}</span>
+          )}
           {isSwitchOn && (
             <RowSwitch
               setTrendMovieOnly={setTrendMovieOnly}

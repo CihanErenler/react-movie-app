@@ -29,6 +29,7 @@ html,
 body {
   font-family: "Roboto", sans-serif;
   background-color: var(--color-bg);
+  scroll-behavior: smooth;
 }
 
 a {
@@ -239,11 +240,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(
-    to right,
-    rgba(18, 18, 18, 0.9),
-    rgba(0, 0, 0, 0.5)
-  );
+  background-color: rgba(18, 18, 18, .8)
 }
 
 .featured-img-container img {
@@ -399,7 +396,7 @@ img {
   height: calc(100% - 94px);
   background-image: linear-gradient(
     to left,
-    rgba(18, 18, 18, 1),
+    rgba(14, 14, 14, 1),
     rgba(0, 0, 0, 0)
   );
   z-index: 2;
@@ -460,20 +457,48 @@ img {
 }
 
 .single-movie {
-  width: 15rem;
-  min-width: 15rem;
-  height: 20rem;
+  width: 14rem;
+  min-width: 14rem;
+  height: 21rem;
   background-color: #ccc;
-  margin-right: 20px;
+  margin-right: 5px;
   position: relative;
   overflow: hidden;
+  transition: var(--transition-2);
+}
+
+.single-movie::before{
+  position: absolute;
+  content: "";
+  inset: 0;
+  z-index: 1;
+  transition: all.3s ease !important;
+   background-color:rgba(14, 14, 14, .2)
+}
+
+.single-movie:not(.large) {
+   border-radius: 8px;
 }
 
 .single-movie.large {
   width: 22rem !important;
-  min-width: 22rem !important;
+  min-width: 20rem !important;
   height: 30rem !important;
   margin-right: 0;
+}
+
+.single-movie.large:hover {
+    width: 23rem !important;
+    min-width: 23rem !important;
+}
+
+.single-movie:hover::before {
+  background-color: transparent
+}
+
+.single-movie:hover {
+  width: 16rem;
+  min-width: 16rem;
 }
 
 .single-movie:hover > .single-movie-content {
@@ -484,21 +509,12 @@ img {
   transition: all 0.3s ease-in-out;
 }
 
-.single-movie:hover .single-movie-poster {
+/* .single-movie:hover .single-movie-poster {
   transform: scale(1.05);
-}
+} */
 
-.single-movie::before {
-  position: absolute;
-  content: "";
-  inset: 0;
-  background-image: linear-gradient(
-    to top,
-    rgba(15, 15, 15, 0.8),
-    rgba(0, 0, 0, 0)
-  );
-  z-index: 1;
-}
+
+
 .single-movie-content {
   position: absolute;
   left: 1.25rem;
