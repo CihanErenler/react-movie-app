@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context";
 import placeholder from "../assets/placeholder.png";
 
@@ -14,9 +14,9 @@ function Person({ character, id, name, profile_path }) {
       <div className="person-info">
         <h3>{name}</h3>
         <p>({character})</p>
-        <Link to={`/person/${id}`} className="btn small-btn btn-primary">
+        {/* <Link to={`/person/${id}`} className="btn small-btn btn-primary">
           Learn more
-        </Link>
+        </Link> */}
       </div>
     </article>
   );

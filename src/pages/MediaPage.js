@@ -9,15 +9,13 @@ import StarIcon from "@mui/icons-material/Star";
 import Person from "../components/Person";
 import MovieRow from "../components/MovieRow";
 import { Link } from "react-router-dom";
+import placeholder from "../assets/poster.svg";
 
 function MoviePage() {
   const [media, setMedia] = useState(null);
-  const [cast, setCast] = useState([]);
-  const [recs, setRecs] = useState([]);
+  // const [cast, setCast] = useState([]);
+  // const [recs, setRecs] = useState(null);
   const { id, type } = useParams();
-
-  console.log(id);
-
   const { backdrop_base, poster_base } = useGlobalContext();
 
   const months = [
@@ -56,12 +54,15 @@ function MoviePage() {
       production_companies: res.production_companies,
       release_date: res.release_date ? res.release_date : null,
       title: res.title ? res.title : null,
-      revirews: res.reviews.length > 0 ? res.reviews.results : null,
       name: res.name ? res.name : null,
       tagline: res.tagline,
       vote_average: calc(parseInt(res.vote_average)),
       status: res.status,
       created_by: res.created_by,
+      recommendations: res.recommendations
+        ? res.recommendations.results
+        : res.similar.results,
+      credits: res.credits ? res.credits.cast : null,
     };
 
     return mediaObj;
@@ -70,20 +71,14 @@ function MoviePage() {
   const fetchMovies = (id) => {
     getMovie(id).then((res) => {
       const mediaObj = createObj(res);
-      console.log(res);
       setMedia(mediaObj);
-      setRecs(res.recommendations.results);
-      setCast(res.credits.cast);
     });
   };
 
   const fetchTv = (id) => {
     getShow(id).then((res) => {
       const mediaObj = createObj(res);
-      console.log(mediaObj);
       setMedia(mediaObj);
-      setRecs(res.recommendations.results);
-      setCast(res.credits.cast);
     });
   };
 
@@ -118,7 +113,11 @@ function MoviePage() {
               <div className="container d-flex">
                 <div className="m-poster">
                   <img
-                    src={`${poster_base}${media.poster_path}`}
+                    src={
+                      media.poster_path
+                        ? `${poster_base}${media.poster_path}`
+                        : placeholder
+                    }
                     alt="poster"
                   />
                 </div>
@@ -215,18 +214,18 @@ function MoviePage() {
               <h1 className="m-cast-title">Cast</h1>
               <div className="row-content">
                 <div className="cast-row">
-                  {cast.map((person) => {
+                  {media.credits.map((person) => {
                     return <Person key={person.id} {...person} />;
                   })}
                 </div>
               </div>
             </div>
           </div>
-          {recs ? (
+          {media.recommendations ? (
             <div className="container" style={{ padding: "0 50px" }}>
               <MovieRow
                 title="Recommendations"
-                movies={recs}
+                movies={media.recommendations}
                 large={false}
                 isSwitchOn={false}
                 displayAll={false}

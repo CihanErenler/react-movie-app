@@ -5,19 +5,21 @@ import HomePage from "./pages/HomePage";
 import MediaPage from "./pages/MediaPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import PersonPage from "./pages/PersonPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/:type/:id" element={<MediaPage />} />
-        <Route exact path="/person/:id" element={<PersonPage />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <React.Fragment>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/:type/:id" element={<MediaPage />} />
+          <Route exact path="/search/:query" element={<SearchPage />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </React.Fragment>
   );
 }
 

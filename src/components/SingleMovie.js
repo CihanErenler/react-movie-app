@@ -1,50 +1,25 @@
 import React from "react";
-import Rating from "@mui/material/Rating";
-import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useGlobalContext } from "../context";
+import placeholder from "../assets/poster.svg";
 
-function SingleMovie({
-  id,
-  poster_path,
-  title,
-  vote_average,
-  name,
-  media_type,
-  large,
-}) {
+function SingleMovie({ id, poster_path, media_type, large }) {
   const { poster_base } = useGlobalContext();
+
+  const poster = poster_path ? `${poster_base}${poster_path}` : placeholder;
 
   return (
     <article className={large ? "single-movie large" : "single-movie"}>
-      <img
-        src={`${poster_base}${poster_path}`}
-        alt="movie-poster"
-        className="single-movie-poster"
-      />
+      <img src={poster} alt="movie-poster" className="single-movie-poster" />
       <div className="single-movie-content">
-        {/* <Genre>Fantasy</Genre> */}
-        {/* <h2 className="poster-title">{title ? title : name}</h2> */}
-        <div className="rating">
-          {/* <Rating
-            name="simple-controlled"
-            value={vote_average}
-            readOnly={true}
-            size="small"
-            precision={0.5}
-            emptyIcon={
-              <StarIcon
-                style={{ opacity: 0.55, color: "white" }}
-                fontSize="inherit"
-              />
-            }
-          /> */}
-        </div>
+        <div className="rating"></div>
       </div>
       <div className="single-more">
         <Link
-          to={`/${media_type === "tv" ? "tv" : "movie"}/${id}`}
+          to={`/${
+            media_type === "movie" || !media_type ? "movie" : "tv"
+          }/${id}`}
           className="single-link d-flex align-center"
         >
           Learn more

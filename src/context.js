@@ -1,16 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import { getTrends, getNowPlaying } from "./data";
+import { getTrends, getNowPlaying, getSearch } from "./data";
 import calc from "./calc";
 
+// Create the context for the app data
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
+  // States
   const [medias, setMedias] = useState({ movie: [], tv: [] });
   const [allMedias, setAllMedas] = useState([]);
   const [nowPlaying, setNowPlaying] = useState(null);
   const [loading, setLoading] = useState(true);
   const [trendMovieOnly, setTrendMovieOnly] = useState(true);
+  const [searchValue, setSearchValue] = useState("");
 
+  // Base urls
   const backdrop_base = "https://image.tmdb.org/t/p/w1280";
   const poster_base = "https://image.tmdb.org/t/p/w500";
   const actor_base = "https://www.themoviedb.org/t/p/w276_and_h350_face/";
@@ -39,10 +43,20 @@ export const AppProvider = ({ children }) => {
     setLoading(false);
   };
 
+  // Fetch the movies that currently in theater
   const getPlayingData = () => {
     getNowPlaying()
       .then((res) => {
         setNowPlaying(res.results);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // Get the data for the search query
+  const fetchSearchData = () => {
+    getSearch(searchValue)
+      .then((res) => {
+        console.log(res);
       })
       .catch((err) => console.log(err));
   };
@@ -65,6 +79,9 @@ export const AppProvider = ({ children }) => {
         trendMovieOnly,
         setTrendMovieOnly,
         actor_base,
+        searchValue,
+        setSearchValue,
+        fetchSearchData,
       }}
     >
       {children}
@@ -72,6 +89,7 @@ export const AppProvider = ({ children }) => {
   );
 };
 
+// A custom hook that distibute all the data thtough app
 export const useGlobalContext = () => {
   return useContext(AppContext);
 };

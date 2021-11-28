@@ -1,26 +1,18 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import logo from "../assets/MBOX.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
+import { useGlobalContext } from "../context";
 
 function Navbar() {
-  // const navbar = useRef(null);
-  // useEffect(() => {
-  //   function handleScroll() {
-  //     if (
-  //       document.documentElement.scrollTop > 30 ||
-  //       document.body.scrollTop > 30
-  //     ) {
-  //       navbar.current.classlist.add("dark");
-  //     } else {
-  //       navbar.current.classlist.remove("dark");
-  //     }
-  //   }
+  const { searchValue, setSearchValue } = useGlobalContext();
 
-  //   window.addEventListener("scroll", handleScroll);
+  const navigate = useNavigate();
 
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+  const handleInput = (e) => {
+    if (searchValue !== "") return navigate(`/search/${searchValue}`);
+    navigate(`/search/${searchValue}`);
+  };
 
   return (
     <div className="navbar">
@@ -29,8 +21,17 @@ function Navbar() {
           <img className="logo-svg" src={logo} alt="logo" />
         </Link>
         <div className="form-container">
-          <input className="search-box" type="text" placeholder="Search..." />
-          <SearchIcon className="search-icon" />
+          <input
+            className="search-box"
+            type="text"
+            placeholder="Search..."
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleInput();
+            }}
+          />
+          <SearchIcon className="search-icon" onClick={handleInput} />
         </div>
       </div>
     </div>
