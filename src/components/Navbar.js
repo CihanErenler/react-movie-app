@@ -11,7 +11,6 @@ function Navbar() {
 
   const handleInput = (e) => {
     if (searchValue !== "") return navigate(`/search/${searchValue}`);
-    navigate(`/search/${searchValue}`);
   };
 
   return (

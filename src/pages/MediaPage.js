@@ -71,6 +71,7 @@ function MoviePage() {
   const fetchMovies = (id) => {
     getMovie(id).then((res) => {
       const mediaObj = createObj(res);
+      console.log(res);
       setMedia(mediaObj);
     });
   };
@@ -149,17 +150,7 @@ function MoviePage() {
                     <p>
                       <span className="m-label">Created by:</span>
                       {media.created_by.map((person) => {
-                        return (
-                          <Link
-                            style={{
-                              textDecoration: "underline",
-                              color: "white",
-                            }}
-                            to={`/person/${person.id}`}
-                          >
-                            {person.name}
-                          </Link>
-                        );
+                        return <span>{person.name}</span>;
                       })}
                     </p>
                   )}
@@ -199,7 +190,7 @@ function MoviePage() {
                       {media.status}
                     </p>
                   )}
-                  {type === "movie" && (
+                  {type === "movie" && media.budget && (
                     <p>
                       <span className="m-label">Budget:</span>
                       {media.budget}$

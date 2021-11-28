@@ -56,9 +56,6 @@ export const getNowPlaying = async () => {
 
 // Get search date
 export const getSearch = async (value) => {
-  console.log(
-    `${base_url}search/movie?api_key=${api_key}&query=${value}&language=en-US&page=1`
-  );
   try {
     const response = await fetch(
       `${base_url}search/movie?api_key=${api_key}&query=${value}&language=en-US&page=1`

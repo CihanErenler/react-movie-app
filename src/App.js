@@ -6,6 +6,7 @@ import MediaPage from "./pages/MediaPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SearchPage from "./pages/SearchPage";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/:type/:id" element={<MediaPage />} />
           <Route exact path="/search/:query" element={<SearchPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
       </Router>

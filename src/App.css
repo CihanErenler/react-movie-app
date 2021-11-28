@@ -739,6 +739,7 @@ img {
 /* Search */
 .search {
   margin-top: 100px;
+  min-height: calc(100vh - 410px);
 }
 
 .search-title {
@@ -750,4 +751,18 @@ img {
   display: grid;
   grid-template-columns: repeat(6,1fr);
   gap: 20px;
+}
+
+/* Error page */
+.error-page {
+  min-height: calc(100vh - 310px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.error-page h1 {
+  color: var(--color-light-gray);
+  margin-bottom: 20px;
 }

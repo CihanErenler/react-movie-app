@@ -4,7 +4,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useGlobalContext } from "../context";
 import placeholder from "../assets/poster.svg";
 
-function SingleMovie({ id, poster_path, media_type, large }) {
+function SingleMovie({ id, poster_path, media_type, large, zoom }) {
   const { poster_base } = useGlobalContext();
 
   const poster = poster_path ? `${poster_base}${poster_path}` : placeholder;
