@@ -20,7 +20,6 @@ function DisplayAllPage() {
       getNowPlaying(searchValue)
         .then((res) => {
           setResults(res.results);
-          console.log(res.results);
         })
         .catch((err) => console.log(err));
     }
