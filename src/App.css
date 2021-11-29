@@ -375,6 +375,7 @@ img {
   font-size: 1.3rem;
   display: inline-flex;
   position: relative;
+  text-transform: capitalize;
 }
 
 .movie-row .container {
@@ -765,4 +766,11 @@ img {
 .error-page h1 {
   color: var(--color-light-gray);
   margin-bottom: 20px;
+}
+
+/* Display all */
+.all-title {
+  color: var(--color-light-gray);
+  text-transform: capitalize;
+  margin-bottom: 20px
 }

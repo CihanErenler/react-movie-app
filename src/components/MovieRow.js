@@ -18,7 +18,7 @@ function MovieRow({
       <div className="container p-relative">
         <div className="movie-row-title d-flex align-center">
           {displayAll ? (
-            <Link className="row-title align-center" to="/display-all">
+            <Link className="row-title align-center" to={`/all/${title}`}>
               {title}
               <span className="row-title-link">Display all</span>
               <ArrowForwardIosTwoToneIcon className="row-title-link-icon" />

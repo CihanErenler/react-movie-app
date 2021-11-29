@@ -20,7 +20,7 @@ function HomePage() {
       <React.Fragment>
         {!loading && <FeaturedMovies movies={allMedias.slice(0, 5)} />}
         <MovieRow
-          title="Trending"
+          title="trending"
           movies={itemToSend}
           isSwitchOn={true}
           setTrendMovieOnly={setTrendMovieOnly}
@@ -28,7 +28,7 @@ function HomePage() {
           displayAll={true}
         />
         <MovieRow
-          title="In theater"
+          title="in theater"
           movies={nowPlaying}
           large={true}
           isSwitchOn={false}

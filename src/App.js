@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SearchPage from "./pages/SearchPage";
 import ErrorPage from "./pages/ErrorPage";
+import DisplayAllPage from "./pages/DisplayAllPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/:type/:id" element={<MediaPage />} />
           <Route exact path="/search/:query" element={<SearchPage />} />
+          <Route exact path="/all/:type" element={<DisplayAllPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
