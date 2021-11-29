@@ -8,7 +8,6 @@ import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import Person from "../components/Person";
 import MovieRow from "../components/MovieRow";
-import { Link } from "react-router-dom";
 import placeholder from "../assets/poster.svg";
 
 function MoviePage() {
