@@ -20,6 +20,7 @@ function DisplayAllPage() {
       getNowPlaying(searchValue)
         .then((res) => {
           setResults(res.results);
+          console.log(res.results);
         })
         .catch((err) => console.log(err));
     }
@@ -36,7 +37,12 @@ function DisplayAllPage() {
               <div className="search-results">
                 {results.map((movie) => {
                   return (
-                    <SingleMovie key={movie.id} {...movie} large={false} />
+                    <SingleMovie
+                      key={movie.id}
+                      {...movie}
+                      large={false}
+                      forceMovie={true}
+                    />
                   );
                 })}
               </div>

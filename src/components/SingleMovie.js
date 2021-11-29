@@ -4,7 +4,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useGlobalContext } from "../context";
 import placeholder from "../assets/poster.svg";
 
-function SingleMovie({ id, poster_path, media_type, large, zoom }) {
+function SingleMovie({ id, poster_path, media_type, large, forceMovie }) {
   const { poster_base } = useGlobalContext();
 
   const poster = poster_path ? `${poster_base}${poster_path}` : placeholder;
@@ -18,7 +18,9 @@ function SingleMovie({ id, poster_path, media_type, large, zoom }) {
       <div className="single-more">
         <Link
           to={`/${
-            media_type !== "movie" || !media_type ? "tv" : "movie"
+            (media_type !== "movie" || !media_type) && !forceMovie
+              ? "tv"
+              : "movie"
           }/${id}`}
           className="single-link d-flex align-center"
         >
