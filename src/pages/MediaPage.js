@@ -70,7 +70,6 @@ function MoviePage() {
   const fetchMovies = (id) => {
     getMovie(id).then((res) => {
       const mediaObj = createObj(res);
-      console.log(mediaObj);
       setMedia(mediaObj);
     });
   };
