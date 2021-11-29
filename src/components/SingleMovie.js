@@ -18,7 +18,7 @@ function SingleMovie({ id, poster_path, media_type, large, zoom }) {
       <div className="single-more">
         <Link
           to={`/${
-            media_type === "movie" || !media_type ? "movie" : "tv"
+            media_type !== "movie" || !media_type ? "tv" : "movie"
           }/${id}`}
           className="single-link d-flex align-center"
         >

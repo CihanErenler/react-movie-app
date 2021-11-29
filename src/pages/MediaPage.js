@@ -70,7 +70,7 @@ function MoviePage() {
   const fetchMovies = (id) => {
     getMovie(id).then((res) => {
       const mediaObj = createObj(res);
-      console.log(res);
+      console.log(mediaObj);
       setMedia(mediaObj);
     });
   };
@@ -211,7 +211,7 @@ function MoviePage() {
               </div>
             </div>
           </div>
-          {media.recommendations ? (
+          {media ? (
             <div className="container" style={{ padding: "0 50px" }}>
               <MovieRow
                 title="Recommendations"
