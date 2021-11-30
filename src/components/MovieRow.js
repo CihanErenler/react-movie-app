@@ -12,6 +12,7 @@ function MovieRow({
   setTrendMovieOnly,
   trendMovieOnly,
   displayAll,
+  forceMovie,
 }) {
   return (
     <section className="movie-row">
@@ -37,7 +38,14 @@ function MovieRow({
           {movies && (
             <div className="movies-container d-flex">
               {movies.map((movie) => {
-                return <SingleMovie key={movie.id} {...movie} large={large} />;
+                return (
+                  <SingleMovie
+                    key={movie.id}
+                    {...movie}
+                    large={large}
+                    forceMovie={forceMovie}
+                  />
+                );
               })}
             </div>
           )}

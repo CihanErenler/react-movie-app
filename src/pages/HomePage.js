@@ -38,7 +38,7 @@ function HomePage() {
           large={true}
           isSwitchOn={false}
           displayAll={true}
-          forceMovie={false}
+          forceMovie={true}
         />
       </React.Fragment>
     </div>
