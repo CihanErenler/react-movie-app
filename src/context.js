@@ -48,6 +48,7 @@ export const AppProvider = ({ children }) => {
     getNowPlaying()
       .then((res) => {
         setNowPlaying(res.results);
+        console.log(res.results);
       })
       .catch((err) => console.log(err));
   };
