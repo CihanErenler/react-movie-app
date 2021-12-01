@@ -13,6 +13,7 @@ function MovieRow({
   trendMovieOnly,
   displayAll,
   forceMovie,
+  zoom,
 }) {
   return (
     <section className="movie-row">
@@ -44,6 +45,7 @@ function MovieRow({
                     {...movie}
                     large={large}
                     forceMovie={forceMovie}
+                    zoom={zoom}
                   />
                 );
               })}

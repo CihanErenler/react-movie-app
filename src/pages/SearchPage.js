@@ -46,6 +46,7 @@ function SearchPage() {
                       {...movie}
                       large={false}
                       forceMovie={true}
+                      zoom={false}
                     />
                   );
                 })}

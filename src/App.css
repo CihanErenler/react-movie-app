@@ -497,7 +497,7 @@ img {
   background-color: transparent
 }
 
-.single-movie:hover {
+.single-movie.zoom:hover {
   width: 16rem;
   min-width: 16rem;
 }
@@ -752,6 +752,32 @@ img {
   display: grid;
   grid-template-columns: repeat(6,1fr);
   gap: 20px;
+}
+
+@media (max-width: 1580px) {
+  .search-results {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media (max-width: 1320px) {
+  .search-results {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 1090px) {
+  .search-results {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 820px) {
+  .search-results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 860px) {
+  .search-results {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /* Error page */

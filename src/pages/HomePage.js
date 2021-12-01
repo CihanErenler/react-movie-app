@@ -31,6 +31,7 @@ function HomePage() {
           setTrendMovieOnly={setTrendMovieOnly}
           trendMovieOnly={trendMovieOnly}
           displayAll={true}
+          zoom={true}
         />
         <MovieRow
           title="in theater"
@@ -39,6 +40,7 @@ function HomePage() {
           isSwitchOn={false}
           displayAll={true}
           forceMovie={true}
+          zoom={true}
         />
       </React.Fragment>
     </div>
